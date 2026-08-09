@@ -66,7 +66,7 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
       const path = lowerCmd.replace('ls', '').trim() || '.';
       const items = listDirectory(path);
       const output = (
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-3 text-[10px]">
           {items.map((item, i) => (
             <span
               key={i}
@@ -269,7 +269,7 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
 
       <div
         ref={terminalRef}
-        className="flex-1 p-3 md:p-4 overflow-y-auto text-xs md:text-sm font-mono"
+        className="flex-1 p-3 md:p-4 overflow-y-auto text-[11px] font-mono"
         onClick={focusInput}
       >
         {showWelcome && (
@@ -302,23 +302,23 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
         )}
 
         {history.map((item, index) => (
-          <div key={index} className="mb-3">
-            <div className="flex items-center gap-2 flex-wrap">
+          <div key={index} className="mb-2">
+            <div className="flex items-center gap-1 flex-wrap text-[10px]">
               <span className="text-[var(--terminal-green)]">visitor@aman0x</span>
-              <span className="text-[var(--terminal-text)]">:</span>
+              <span className="text-[var(--terminal-text)] opacity-50">:</span>
               <span className="text-[var(--terminal-cyan)]">~</span>
-              <span className="text-[var(--terminal-text)]">$</span>
+              <span className="text-[var(--terminal-text)] opacity-50">$</span>
               <span className="text-[var(--terminal-text)]">{item.command}</span>
             </div>
-            {item.output && <div className="mt-2 ml-0 md:ml-4">{item.output}</div>}
+            {item.output && <div className="mt-1 ml-2">{item.output}</div>}
           </div>
         ))}
 
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-1 flex-wrap text-[10px]">
           <span className="text-[var(--terminal-green)]">visitor@aman0x</span>
-          <span className="text-[var(--terminal-text)]">:</span>
+          <span className="text-[var(--terminal-text)] opacity-50">:</span>
           <span className="text-[var(--terminal-cyan)]">~</span>
-          <span className="text-[var(--terminal-text)]">$</span>
+          <span className="text-[var(--terminal-text)] opacity-50">$</span>
           <div className="flex-1 relative min-w-[200px]">
             <input
               ref={inputRef}
@@ -353,9 +353,18 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
         )}
       </div>
 
-      <footer className="px-4 py-2 bg-[#161b22] border-t border-[#30363d] text-xs text-[var(--terminal-text)] opacity-50 flex flex-wrap justify-between gap-2">
-        <span>↑↓ History • Tab Autocomplete • Ctrl+L Clear</span>
-        <span>Pro Mode • © 2024 aman0x</span>
+      <footer className="px-3 py-1.5 bg-[#161b22] border-t border-[#30363d] text-[10px] text-[var(--terminal-text)]">
+        <div className="flex flex-wrap gap-x-3 gap-y-0.5 opacity-70">
+          <span className="text-[var(--terminal-yellow)]">Try:</span>
+          <span className="text-[var(--terminal-green)]">about</span>
+          <span className="text-[var(--terminal-green)]">experience</span>
+          <span className="text-[var(--terminal-green)]">skills</span>
+          <span className="text-[var(--terminal-green)]">projects</span>
+          <span className="text-[var(--terminal-green)]">contact</span>
+          <span className="text-[var(--terminal-cyan)]">ls</span>
+          <span className="text-[var(--terminal-cyan)]">cat [file]</span>
+          <span className="text-[var(--terminal-purple)]">help</span>
+        </div>
       </footer>
     </div>
   );
