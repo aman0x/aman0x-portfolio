@@ -248,22 +248,22 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
         />
       )}
 
-      <header className="flex items-center justify-between px-4 py-2 bg-[#161b22] border-b border-[#30363d]">
+      <header className="flex items-center justify-between px-2 md:px-4 py-1.5 md:py-2 bg-[#161b22] border-b border-[#30363d]">
         <div className="flex items-center gap-2">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-[#f85149]" />
-            <div className="w-3 h-3 rounded-full bg-[#d29922]" />
-            <div className="w-3 h-3 rounded-full bg-[#3fb950]" />
+          <div className="flex gap-1">
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#f85149]" />
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#d29922]" />
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#3fb950]" />
           </div>
-          <span className="ml-4 text-sm text-[var(--terminal-text)] opacity-70">
-            aman0x — bash — 80×24
+          <span className="ml-2 md:ml-4 text-[10px] md:text-xs text-[var(--terminal-text)] opacity-70">
+            aman0x — bash
           </span>
         </div>
         <button
           onClick={onToggleVersion}
-          className="px-3 py-1 text-xs bg-[var(--terminal-yellow)]/20 text-[var(--terminal-yellow)] rounded hover:bg-[var(--terminal-yellow)]/30 transition-colors"
+          className="px-2 py-0.5 text-[9px] md:text-xs bg-[var(--terminal-yellow)]/20 text-[var(--terminal-yellow)] rounded hover:bg-[var(--terminal-yellow)]/30 transition-colors"
         >
-          ← Switch to Classic
+          Notepad++
         </button>
       </header>
 
@@ -273,31 +273,29 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
         onClick={focusInput}
       >
         {showWelcome && (
-          <div className="mb-4">
-            <div className="flex flex-col md:flex-row gap-4 items-start mb-3">
+          <div className="mb-3">
+            <div className="flex gap-3 items-start mb-2">
               <DotImage
                 src="/aman.jpg"
-                width={80}
-                height={80}
+                width={60}
+                height={60}
                 dotSize={2}
                 dotGap={1}
                 color="#3fb950"
               />
-              <div>
-                <p className="text-[var(--terminal-green)] text-lg md:text-xl font-bold tracking-wide">AMAN SINGH CHANDEL</p>
-                <p className="text-[var(--terminal-cyan)] text-xs font-medium mt-1">VP of Technology & Engineering Leader</p>
-                <p className="text-[var(--terminal-text)] opacity-60 text-[10px] mt-0.5">11+ Years • Architecture • AI/ML • Data Platforms • 3D Systems</p>
-                <div className="flex gap-1 mt-2 flex-wrap">
-                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-green)]/50 text-[var(--terminal-green)] rounded">Python</span>
-                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-cyan)]/50 text-[var(--terminal-cyan)] rounded">React</span>
-                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-purple)]/50 text-[var(--terminal-purple)] rounded">Django</span>
-                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-yellow)]/50 text-[var(--terminal-yellow)] rounded">K8s</span>
-                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-pink)]/50 text-[var(--terminal-pink)] rounded">Three.js</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-[var(--terminal-green)] text-sm md:text-lg font-bold tracking-wide">AMAN SINGH CHANDEL</p>
+                <p className="text-[var(--terminal-cyan)] text-[10px] md:text-xs font-medium">VP of Technology & Engineering Leader</p>
+                <p className="text-[var(--terminal-text)] opacity-60 text-[9px] md:text-[10px] hidden md:block">11+ Years • Architecture • AI/ML • Data Platforms • 3D</p>
+                <div className="flex gap-1 mt-1.5 flex-wrap">
+                  <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-green)]/50 text-[var(--terminal-green)] rounded">Python</span>
+                  <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-cyan)]/50 text-[var(--terminal-cyan)] rounded">React</span>
+                  <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-purple)]/50 text-[var(--terminal-purple)] rounded">Django</span>
+                  <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-yellow)]/50 text-[var(--terminal-yellow)] rounded hidden md:inline">K8s</span>
                 </div>
-                <p className="text-[var(--terminal-text)] opacity-40 text-[10px] mt-2">Currently: Senior Full Stack Engineer @ Cloudastra Technologies</p>
               </div>
             </div>
-            <pre className="text-[var(--terminal-text)] whitespace-pre-wrap text-[10px] opacity-70">{WELCOME_MESSAGE}</pre>
+            <pre className="text-[var(--terminal-text)] whitespace-pre-wrap text-[9px] md:text-[10px] opacity-60">{WELCOME_MESSAGE}</pre>
           </div>
         )}
 
@@ -353,16 +351,13 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
         )}
       </div>
 
-      <footer className="px-3 py-1.5 bg-[#161b22] border-t border-[#30363d] text-[10px] text-[var(--terminal-text)]">
-        <div className="flex flex-wrap gap-x-3 gap-y-0.5 opacity-70">
+      <footer className="px-2 md:px-3 py-1 bg-[#161b22] border-t border-[#30363d] text-[9px] md:text-[10px] text-[var(--terminal-text)]">
+        <div className="flex flex-wrap gap-x-2 md:gap-x-3 gap-y-0.5 opacity-70">
           <span className="text-[var(--terminal-yellow)]">Try:</span>
           <span className="text-[var(--terminal-green)]">about</span>
-          <span className="text-[var(--terminal-green)]">experience</span>
           <span className="text-[var(--terminal-green)]">skills</span>
           <span className="text-[var(--terminal-green)]">projects</span>
           <span className="text-[var(--terminal-green)]">contact</span>
-          <span className="text-[var(--terminal-cyan)]">ls</span>
-          <span className="text-[var(--terminal-cyan)]">cat [file]</span>
           <span className="text-[var(--terminal-purple)]">help</span>
         </div>
       </footer>
