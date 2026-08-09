@@ -133,37 +133,49 @@ export const commands: Record<string, CommandOutput> = {
   skills: {
     content: (
       <div className="space-y-2 text-xs">
-        <p className="text-[var(--terminal-yellow)]">// Technical Skills</p>
+        <p className="text-[var(--terminal-yellow)]">// Technical Skills (11+ years)</p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+        <div className="space-y-1.5">
           <div>
-            <p className="text-[var(--terminal-purple)] font-medium">Languages</p>
-            <p className="opacity-70">Python, TypeScript, PHP, SQL</p>
+            <span className="text-[var(--terminal-purple)]">Languages:</span>
+            <span className="opacity-80 ml-1">Python, TypeScript, JavaScript, PHP, SQL, Java</span>
           </div>
           <div>
-            <p className="text-[var(--terminal-purple)] font-medium">Frontend</p>
-            <p className="opacity-70">React, Next.js, Vue, Three.js</p>
+            <span className="text-[var(--terminal-purple)]">Frontend:</span>
+            <span className="opacity-80 ml-1">React, Next.js, Vue.js, Three.js, Babylon.js, D3, ECharts</span>
           </div>
           <div>
-            <p className="text-[var(--terminal-purple)] font-medium">Backend</p>
-            <p className="opacity-70">Django, Flask, Node.js</p>
+            <span className="text-[var(--terminal-purple)]">Backend:</span>
+            <span className="opacity-80 ml-1">Django, Flask, Node.js, REST, GraphQL, WebSocket</span>
           </div>
           <div>
-            <p className="text-[var(--terminal-purple)] font-medium">Database</p>
-            <p className="opacity-70">PostgreSQL, MongoDB, Redis</p>
+            <span className="text-[var(--terminal-purple)]">Database:</span>
+            <span className="opacity-80 ml-1">PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch, LakeFS</span>
           </div>
           <div>
-            <p className="text-[var(--terminal-purple)] font-medium">Data/ML</p>
-            <p className="opacity-70">MLflow, Superset, Spark</p>
+            <span className="text-[var(--terminal-purple)]">Data/ML:</span>
+            <span className="opacity-80 ml-1">MLflow, Apache Superset, Spark, Airbyte, DLT, Temporal.io</span>
           </div>
           <div>
-            <p className="text-[var(--terminal-purple)] font-medium">DevOps</p>
-            <p className="opacity-70">Docker, K8s, GKE, AWS</p>
+            <span className="text-[var(--terminal-purple)]">DevOps:</span>
+            <span className="opacity-80 ml-1">Docker, Kubernetes, GKE, AWS, ArgoCD, Helm, Cloud Run</span>
+          </div>
+          <div>
+            <span className="text-[var(--terminal-purple)]">3D/Graphics:</span>
+            <span className="opacity-80 ml-1">Blender (Python API), Unity, Three.js, WebSocket sync</span>
+          </div>
+          <div>
+            <span className="text-[var(--terminal-purple)]">Auth:</span>
+            <span className="opacity-80 ml-1">Keycloak, OAuth2, JWT</span>
+          </div>
+          <div>
+            <span className="text-[var(--terminal-purple)]">Leadership:</span>
+            <span className="opacity-80 ml-1">40+ engineers, VP roles, Agile, Mentoring</span>
           </div>
         </div>
 
         <p className="text-[var(--terminal-text)] opacity-40 mt-1">
-          → <span className="text-[var(--terminal-cyan)]">open skills.json</span> for details
+          → <span className="text-[var(--terminal-cyan)]">cat skills.json</span> for full breakdown
         </p>
       </div>
     ),
@@ -172,36 +184,48 @@ export const commands: Record<string, CommandOutput> = {
   projects: {
     content: (
       <div className="space-y-2 text-xs">
-        <p className="text-[var(--terminal-yellow)]">// Notable Projects</p>
+        <p className="text-[var(--terminal-yellow)]">// Projects (Cloudastra & Personal)</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          <div className="border border-[var(--terminal-green)]/50 p-2 rounded">
-            <p className="text-[var(--terminal-green)] font-medium">ModelCraft V3 <span className="text-[var(--terminal-yellow)]">★17</span></p>
-            <p className="opacity-60">AI 3D design | Blender ↔ Three.js</p>
-            <p className="text-[var(--terminal-cyan)] opacity-70 mt-1">→ open projects/modelcraft.md</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+          <div className="border border-[var(--terminal-green)]/40 p-1.5 rounded">
+            <p className="text-[var(--terminal-green)] font-medium">Key Ward</p>
+            <p className="opacity-50 text-[10px]">AI Data Platform | Automotive/Aerospace</p>
+            <p className="opacity-40 text-[10px]">DLT, MLflow, Spark, LakeFS, GKE</p>
           </div>
 
-          <div className="border border-[var(--terminal-cyan)]/50 p-2 rounded">
+          <div className="border border-[var(--terminal-cyan)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-cyan)] font-medium">Saarathi Finance</p>
-            <p className="opacity-60">NBFC Lending | Temporal.io</p>
-            <p className="text-[var(--terminal-cyan)] opacity-70 mt-1">→ open projects/saarathi.md</p>
+            <p className="opacity-50 text-[10px]">NBFC Lending | Credit Bureau APIs</p>
+            <p className="opacity-40 text-[10px]">Django, Temporal.io, Keycloak</p>
           </div>
 
-          <div className="border border-[var(--terminal-purple)]/50 p-2 rounded">
+          <div className="border border-[var(--terminal-purple)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-purple)] font-medium">WiseYatra</p>
-            <p className="opacity-60">Travel Platform | Next.js</p>
-            <p className="text-[var(--terminal-cyan)] opacity-70 mt-1">→ open projects/wiseyatra.md</p>
+            <p className="opacity-50 text-[10px]">Travel Booking Platform</p>
+            <p className="opacity-40 text-[10px]">Next.js, Zustand, Google Maps</p>
           </div>
 
-          <div className="border border-[var(--terminal-pink)]/50 p-2 rounded">
-            <p className="text-[var(--terminal-pink)] font-medium">blender-websocket <span className="text-[var(--terminal-yellow)]">★9</span></p>
-            <p className="opacity-60">Real-time 3D communication</p>
-            <p className="text-[var(--terminal-cyan)] opacity-70 mt-1">→ github.com/aman0x</p>
+          <div className="border border-[var(--terminal-yellow)]/40 p-1.5 rounded">
+            <p className="text-[var(--terminal-yellow)] font-medium">Siloho (VP Tech)</p>
+            <p className="opacity-50 text-[10px]">AI Interior Design | 3D Renders</p>
+            <p className="opacity-40 text-[10px]">Vue, Django, Blender, Unity</p>
+          </div>
+
+          <div className="border border-[var(--terminal-pink)]/40 p-1.5 rounded">
+            <p className="text-[var(--terminal-pink)] font-medium">ftcash (VP Tech)</p>
+            <p className="opacity-50 text-[10px]">Digital Payments & Lending</p>
+            <p className="opacity-40 text-[10px]">40+ team, Razorpay, ICICI</p>
+          </div>
+
+          <div className="border border-[var(--terminal-green)]/40 p-1.5 rounded">
+            <p className="text-[var(--terminal-green)] font-medium">ModelCraft V3 <span className="text-[var(--terminal-yellow)]">★17</span></p>
+            <p className="opacity-50 text-[10px]">AI 3D Design | Open Source</p>
+            <p className="opacity-40 text-[10px]">React, Three.js, Blender, TensorFlow</p>
           </div>
         </div>
 
         <p className="text-[var(--terminal-text)] opacity-40 mt-1">
-          36 repos: <span className="text-[var(--terminal-green)]">github.com/aman0x</span>
+          <span className="text-[var(--terminal-cyan)]">ls projects/</span> for files | <span className="text-[var(--terminal-green)]">github.com/aman0x</span> (36 repos)
         </p>
       </div>
     ),

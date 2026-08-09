@@ -9,35 +9,22 @@ export const files: Record<string, FileContent> = {
     name: 'about.md',
     language: 'md',
     content: `# Aman Singh Chandel
+## VP of Technology | Engineering Leader
 
-## About Me
+11+ years building and scaling commercially successful products from scratch.
+Expert in full-stack development, backend systems, and API integrations.
 
-I'm a **technology leader** with 11+ years of experience building and scaling
-commercially successful products from the ground up.
+### Core Competencies
+- **Technical Leadership**: Built and led teams of 40+ engineers
+- **Architecture Design**: Multi-tenant platforms, microservices, distributed systems
+- **Product Development**: End-to-end product lifecycle management
+- **AI/ML Integration**: MLflow, computer vision, 3D rendering pipelines
 
-### What I Do
+### Industries
+FinTech • EdTech • Travel Tech • Interior Design • OTT Streaming • E-commerce
 
-- **Full-Stack Development**: React, Next.js, Vue.js, Django, Flask, Node.js
-- **Backend Systems**: API design, microservices, distributed systems
-- **Data Platforms**: DLT pipelines, MLflow, Apache Superset, LakeFS
-- **3D & AI/ML**: Blender integration, Three.js, computer vision
-
-### Current Focus
-
-Building **ModelCraft V3** - an AI-powered 3D design platform featuring:
-- AI detection of architectural elements from floor plans
-- Real-time Blender ↔ Three.js synchronization
-- 2D/3D editing capabilities
-- Production-quality rendering
-
-### Philosophy
-
-I believe in building products that are:
-- **Scalable** from day one
-- **User-centric** in design
-- **Maintainable** for the long term
-
-> "Code is poetry, architecture is the canvas."
+### Education
+B.E. Information Technology - Kanpur Institute of Technology (2013)
 `,
   },
 
@@ -45,63 +32,102 @@ I believe in building products that are:
     name: 'experience.json',
     language: 'json',
     content: `{
-  "professional_experience": [
+  "experience": [
     {
       "role": "Senior Full Stack Engineer",
-      "company": "Cloudastra",
-      "location": "Noida, UP",
+      "company": "Cloudastra Technologies",
       "period": "Nov 2023 - Present",
-      "highlights": [
-        "Key Ward - AI-Ready Engineering Data Platform",
-        "Multi-tenant DLT pipelines with custom transformers",
-        "MLflow integration for ML experiment tracking",
-        "Apache Superset custom plugins"
+      "location": "Noida",
+      "projects": [
+        {
+          "name": "Key Ward",
+          "desc": "AI-Ready Engineering Data Platform for automotive/aerospace",
+          "contributions": [
+            "Multi-tenant DLT pipelines with custom transformers",
+            "Data versioning with LakeFS",
+            "MLflow for experiment tracking",
+            "Apache Superset custom React/TS plugins",
+            "BFF proxy pattern for security"
+          ],
+          "stack": ["React", "TypeScript", "Python", "Flask", "Spark", "PostgreSQL", "GKE", "Docker", "MLflow", "LakeFS"]
+        },
+        {
+          "name": "Taffi",
+          "desc": "Fashion discovery and stylist-matching app",
+          "contributions": ["Led backend/frontend planning", "Team coordination"]
+        },
+        {
+          "name": "Volo Health TPA",
+          "desc": "IRDA-licensed health insurance claims platform",
+          "contributions": ["Claims status", "Registration workflows", "Grievance handling"]
+        },
+        {
+          "name": "Saarathi Finance",
+          "desc": "NBFC digital lending for MSMEs",
+          "stack": ["Django", "PostgreSQL", "Temporal.io", "Keycloak"]
+        },
+        {
+          "name": "WiseYatra",
+          "desc": "Travel booking platform",
+          "stack": ["Next.js", "React", "TypeScript", "Tailwind", "Zustand", "Google Maps"]
+        }
       ]
     },
     {
       "role": "VP Technology",
       "company": "Siloho",
-      "location": "Panjim, Goa",
       "period": "Sep 2021 - Oct 2023",
+      "location": "Goa",
       "highlights": [
+        "Defined strategic roadmap for AI-powered interior design platform",
         "Built 12+ member engineering team",
-        "AI-powered interior design platform",
-        "Blender/Unity real-time 3D rendering",
-        "Vue.js + Django architecture"
-      ]
+        "Integrated Blender/Unity for real-time 3D renders",
+        "Vue.js + Django scalable architecture"
+      ],
+      "stack": ["Python", "Django", "Vue.js", "PostgreSQL", "Elasticsearch", "Redis", "Blender", "Unity"]
     },
     {
       "role": "VP Technology",
-      "company": "ftcash",
-      "location": "Mumbai",
+      "company": "ftcash (Nomisma Mobile Solutions)",
       "period": "Oct 2019 - Sep 2021",
+      "location": "Mumbai",
       "highlights": [
+        "Full product lifecycle for digital payments & lending",
         "Scaled team to 40+ engineers",
-        "Digital payments & lending platform",
-        "Payment gateway integrations",
-        "Loan management system"
+        "RESTful billing engine with Razorpay/ICICI integration",
+        "Daily-DPD loan management system"
       ]
     },
     {
       "role": "Senior Software Developer",
       "company": "Eros Now",
-      "location": "Mumbai",
       "period": "Nov 2018 - Oct 2019",
+      "location": "Mumbai",
       "highlights": [
         "OTT video streaming platform",
         "PHP to Python migration",
-        "RabbitMQ + MongoDB architecture"
+        "RabbitMQ + MongoDB for bulk transactions"
       ]
     },
     {
       "role": "Senior Software Engineer",
       "company": "Mswipe Technologies",
-      "location": "Mumbai",
       "period": "Jan 2016 - Oct 2018",
+      "location": "Mumbai",
       "highlights": [
-        "POS solutions for enterprise clients",
-        "Offline transaction processing",
-        "Airline clients: CCD, Vistara, Jet Airways"
+        "Mventry/Mventry Offline POS platform",
+        "Enterprise clients: CCD, Vistara, Jet Airways",
+        "Offline transaction sync queue system"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Qtriangle Infotech",
+      "period": "Jan 2014 - Jan 2016",
+      "location": "Noida",
+      "highlights": [
+        "E-commerce platforms",
+        "Clients: Common Floor, Naaptol, Supporthjelpen"
       ]
     }
   ]
@@ -112,86 +138,136 @@ I believe in building products that are:
     name: 'skills.json',
     language: 'json',
     content: `{
-  "languages": ["Python", "TypeScript", "JavaScript", "PHP", "SQL"],
+  "programming_languages": {
+    "expert": ["Python", "TypeScript", "JavaScript"],
+    "proficient": ["PHP", "SQL", "Java"],
+    "years": "11+"
+  },
   "frontend": {
     "frameworks": ["React", "Next.js", "Vue.js"],
-    "styling": ["Tailwind CSS", "CSS3", "SASS"],
-    "visualization": ["ECharts", "D3.js", "Three.js", "Babylon.js"]
+    "languages": ["TypeScript", "JavaScript", "HTML5", "CSS3"],
+    "styling": ["Tailwind CSS", "SASS", "Styled Components"],
+    "visualization": ["ECharts", "D3.js", "Three.js", "Babylon.js"],
+    "state": ["Redux", "Zustand", "Vuex"]
   },
   "backend": {
     "frameworks": ["Django", "Flask", "Node.js", "Express"],
-    "databases": ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
-    "search": ["Elasticsearch"]
+    "api": ["REST", "GraphQL", "WebSocket"],
+    "auth": ["Keycloak", "OAuth2", "JWT"],
+    "queue": ["Celery", "RabbitMQ", "Redis Queue"]
+  },
+  "databases": {
+    "relational": ["PostgreSQL", "MySQL"],
+    "nosql": ["MongoDB", "Redis", "Elasticsearch"],
+    "data_versioning": ["LakeFS"]
   },
   "data_engineering": {
-    "tools": ["Apache Superset", "MLflow", "Airbyte", "LakeFS"],
-    "processing": ["Apache Spark", "DLT", "Temporal.io", "Celery"]
+    "etl": ["Airbyte", "DLT Pipelines", "Apache Spark"],
+    "ml_ops": ["MLflow", "Model Registry"],
+    "visualization": ["Apache Superset", "Custom Dashboards"],
+    "workflow": ["Temporal.io", "Celery", "Airflow"]
   },
   "devops": {
-    "cloud": ["GKE", "AWS", "Cloud Run"],
+    "cloud": ["GCP (GKE, Cloud Run)", "AWS (EC2, S3, Lambda)"],
     "containers": ["Docker", "Kubernetes", "Helm"],
-    "ci_cd": ["ArgoCD", "GitHub Actions"]
+    "ci_cd": ["ArgoCD", "GitHub Actions", "Jenkins"],
+    "monitoring": ["SonarQube", "Prometheus", "Grafana"]
   },
-  "tools": ["Git", "Jira", "SonarQube", "Keycloak", "Blender"]
+  "3d_graphics": {
+    "engines": ["Blender (Python API)", "Unity", "Three.js"],
+    "realtime": ["WebSocket sync", "Realityserver"],
+    "formats": ["glTF", "FBX", "OBJ"]
+  },
+  "tools": {
+    "version_control": ["Git", "GitHub", "GitLab"],
+    "project": ["Jira", "Redmine", "Linear"],
+    "communication": ["Slack", "Teams"],
+    "design": ["Figma", "Blender"]
+  },
+  "leadership": {
+    "team_size": "40+ engineers",
+    "roles": ["VP Technology", "Tech Lead", "Architect"],
+    "practices": ["Agile", "Scrum", "Code Reviews", "Mentoring"]
+  }
 }`,
+  },
+
+  'projects/keyward.md': {
+    name: 'projects/keyward.md',
+    language: 'md',
+    content: `# Key Ward - AI-Ready Engineering Data Platform
+
+## Overview
+Enterprise data platform for automotive and aerospace sectors.
+Facilitates AI-ready data workflows and scalable engineering solutions.
+
+## Core Contributions
+- Architected multi-tenant platform with DLT pipelines
+- Custom transformers for SQL, REST APIs, Python connectors
+- Data versioning with LakeFS for pipeline rollbacks
+- MLflow integration for experiment tracking
+- Apache Superset custom React/TypeScript plugins
+- BFF proxy pattern for credential management
+
+## Architecture
+\`\`\`
+┌────────────┐    ┌────────────┐    ┌────────────┐
+│  Airbyte   │───▶│    DLT     │───▶│   Spark    │
+│  Sources   │    │  Pipelines │    │  Process   │
+└────────────┘    └────────────┘    └─────┬──────┘
+                                          │
+     ┌────────────────────────────────────┼─────┐
+     ▼                    ▼               ▼     │
+┌─────────┐        ┌──────────┐     ┌─────────┐ │
+│ LakeFS  │        │  MLflow  │     │Superset │ │
+│Version  │        │   Exp    │     │Dashboard│ │
+└─────────┘        └──────────┘     └─────────┘ │
+                                                │
+                        ┌───────────────────────┘
+                        ▼
+                 ┌────────────┐
+                 │    GKE     │
+                 │  Cluster   │
+                 └────────────┘
+\`\`\`
+
+## Tech Stack
+React, TypeScript, Python, Flask, Apache Spark, PostgreSQL,
+GKE, Docker, MLflow, LakeFS, Airbyte, Apache Superset
+`,
   },
 
   'projects/saarathi.md': {
     name: 'projects/saarathi.md',
     language: 'md',
-    content: `# Saarathi Finance (Inclue)
+    content: `# Saarathi Finance - NBFC Digital Lending Platform
 
 ## Overview
+Digital lending platform for MSMEs with credit bureau integrations.
 
-Digital lending platform for an NBFC serving MSMEs (Micro, Small & Medium Enterprises).
-Built end-to-end backend and frontend components for streamlined loan processing.
+## Features
+- **Credit Bureau APIs**: CIBIL, Experian, CRIF High Mark
+- **Loan Processing**: Application → KYC → Approval → Disbursement
+- **Document Management**: Verification, e-signatures
+- **Workflow Engine**: Temporal.io for complex loan workflows
 
-## Key Features
-
-### Credit Bureau Integration
-- **CIBIL** - Credit score and report fetching
-- **Experian** - Alternative credit data
-- **CRIF High Mark** - Additional credit insights
-
-### Loan Management
-- Application processing workflow
-- Document verification system
-- KYC integration (Aadhaar, PAN)
-- E-signature integration
-
-### Technical Architecture
-
+## Architecture
 \`\`\`
-┌─────────────────┐     ┌──────────────────┐
-│   React Admin   │────▶│   Django REST    │
-│    Dashboard    │     │      API         │
-└─────────────────┘     └────────┬─────────┘
-                                 │
-        ┌────────────────────────┼────────────────────────┐
-        ▼                        ▼                        ▼
-┌───────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│   Temporal.io │      │   PostgreSQL    │      │    Keycloak     │
-│   Workflows   │      │    Database     │      │   Auth Server   │
-└───────────────┘      └─────────────────┘      └─────────────────┘
+┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+│   React     │────▶│   Django     │────▶│ PostgreSQL  │
+│   Admin     │     │   REST API   │     │             │
+└─────────────┘     └──────┬───────┘     └─────────────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        ▼                  ▼                  ▼
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│ Temporal.io │    │  Keycloak   │    │Credit Bureau│
+│  Workflows  │    │    Auth     │    │    APIs     │
+└─────────────┘    └─────────────┘    └─────────────┘
 \`\`\`
 
 ## Tech Stack
-
-| Layer      | Technology                    |
-|------------|-------------------------------|
-| Frontend   | React, TypeScript             |
-| Backend    | Django, Django REST Framework |
-| Database   | PostgreSQL                    |
-| Workflows  | Temporal.io                   |
-| Auth       | Keycloak                      |
-| Queue      | Celery + Redis                |
-
-## Impact
-
-- Processed **500+** loan applications monthly
-- Reduced processing time by **60%**
-- Automated credit bureau checks
-- Streamlined MSME lending workflow
+Django, PostgreSQL, Temporal.io, Keycloak, React, Celery, Redis
 `,
   },
 
@@ -201,34 +277,18 @@ Built end-to-end backend and frontend components for streamlined loan processing
     content: `# WiseYatra - Travel Booking Platform
 
 ## Overview
-
-Comprehensive travel booking platform covering flights, hotels, transfers,
-and activities. Built the complete frontend application with modern React stack.
+Comprehensive travel platform: flights, hotels, transfers, activities.
 
 ## Features
+- Multi-city flight search with fare comparison
+- Hotel booking with real-time availability
+- Airport transfers and local experiences
+- Interactive maps with Google Maps API
 
-### Flight Booking
-- Multi-city search
-- Fare comparison
-- Seat selection
-- Baggage add-ons
+## Tech Stack
+Next.js, React, TypeScript, Tailwind CSS, Zustand, Google Maps API
 
-### Hotel Reservations
-- Real-time availability
-- Photo galleries
-- Room comparisons
-- Guest reviews integration
-
-### Transfers & Activities
-- Airport transfers
-- Local experiences
-- Tour packages
-- Activity booking
-
-## Technical Implementation
-
-### Frontend Architecture
-
+## Frontend Architecture
 \`\`\`
 src/
 ├── components/
@@ -236,164 +296,123 @@ src/
 │   ├── hotels/
 │   ├── transfers/
 │   └── common/
-├── store/
-│   └── zustand/
+├── store/ (Zustand)
 ├── hooks/
-├── utils/
 └── pages/
 \`\`\`
+`,
+  },
 
-### State Management
+  'projects/siloho.md': {
+    name: 'projects/siloho.md',
+    language: 'md',
+    content: `# Siloho - AI Interior Design Platform
 
-Using **Zustand** for lightweight, performant state management:
+## Overview
+AI-powered interior design with real-time 3D renders.
+Users design and customize their house with furniture, fittings, colors.
 
-\`\`\`typescript
-interface BookingStore {
-  flights: Flight[];
-  hotels: Hotel[];
-  cart: CartItem[];
-  addToCart: (item: CartItem) => void;
-  checkout: () => Promise<void>;
-}
-\`\`\`
-
-### Maps Integration
-
-- **Google Maps API** for location services
-- Interactive hotel maps
-- Transfer route visualization
-- Nearby attractions
+## My Role (VP Technology)
+- Defined strategic roadmap and technical vision
+- Built 12+ member engineering team
+- Integrated Blender/Unity for real-time 3D
+- Scalable Vue.js + Django architecture
 
 ## Tech Stack
+Python, Django, Vue.js, PostgreSQL, Elasticsearch, Redis, Blender, Unity
 
-| Technology    | Purpose                    |
-|---------------|----------------------------|
-| Next.js       | React framework, SSR       |
-| TypeScript    | Type safety                |
-| Tailwind CSS  | Styling                    |
-| Zustand       | State management           |
-| Google Maps   | Location services          |
-| React Query   | Data fetching              |
+## 3D Pipeline
+\`\`\`
+User Input → Vue.js Editor → Django API → Blender Server → 3D Render Output
+\`\`\`
+`,
+  },
 
-## Performance Optimizations
+  'projects/ftcash.md': {
+    name: 'projects/ftcash.md',
+    language: 'md',
+    content: `# ftcash - Digital Payments & Lending
 
-- **Code splitting** for faster initial load
-- **Image optimization** with Next.js Image
-- **SSR/SSG** for SEO and performance
-- **Lazy loading** for below-fold content
+## Overview
+Financial services for micro-merchants and SMEs.
+Digital payments and business loans platform.
 
-## Screenshots
+## My Role (VP Technology)
+- Full product lifecycle for payments & lending
+- Scaled team to 40+ engineers
+- Payment gateway integrations (Razorpay, ICICI)
+- Daily-DPD loan management system
 
-> Travel booking interface with modern, clean design
-> Responsive across all device sizes
+## Features
+- RESTful billing engine
+- Merchant invoicing
+- Unsecured/secured business loans
+- Credit assessment workflows
 `,
   },
 
   'projects/modelcraft.md': {
     name: 'projects/modelcraft.md',
     language: 'md',
-    content: `# ModelCraft V3
+    content: `# ModelCraft V3 - AI 3D Design Platform
 
-## AI-Powered 3D Design Platform
+## Overview
+AI-powered 3D design from 2D floor plans.
+Real-time Blender ↔ Three.js synchronization.
 
-An innovative platform for creating 3D interior designs from 2D floor plans
-using AI and real-time rendering technologies.
+## Features
+- AI floor plan detection (walls, rooms, doors, windows)
+- Real-time 3D rendering
+- 2D/3D editing tools
+- Material and asset library
 
-## Core Features
-
-### AI Floor Plan Detection
-- Automatic wall detection
-- Room identification
-- Door/window recognition
-- Furniture placement suggestions
-
-### Real-Time 3D Rendering
-- Blender ↔ Three.js synchronization
-- Live material editing
-- Dynamic lighting
-- Camera path animations
-
-### Design Tools
-- 2D plan editing
-- 3D object manipulation
-- Material library
-- Asset management
-
-## Architecture
-
-\`\`\`
-┌─────────────────────────────────────────────────────────┐
-│                    Frontend (React)                      │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │
-│  │  2D Editor  │  │  3D Viewer  │  │  Asset Manager  │  │
-│  │  (Canvas)   │  │  (Three.js) │  │                 │  │
-│  └─────────────┘  └─────────────┘  └─────────────────┘  │
-└────────────────────────┬────────────────────────────────┘
-                         │ WebSocket
-                         ▼
-┌─────────────────────────────────────────────────────────┐
-│                  Backend (Python/Flask)                  │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │
-│  │  AI Models  │  │  Blender    │  │  Asset Storage  │  │
-│  │  (CV/ML)    │  │  Server     │  │  (S3/GCS)       │  │
-│  └─────────────┘  └─────────────┘  └─────────────────┘  │
-└─────────────────────────────────────────────────────────┘
-\`\`\`
-
-## GitHub Stats
-
-⭐ **17 stars** on GitHub
-🔗 github.com/aman0x/modelcraft
+## GitHub: ⭐ 17 stars
+github.com/aman0x/modelcraft
 
 ## Tech Stack
+React, Three.js, TypeScript, Python, Flask, Blender, TensorFlow, OpenCV
+`,
+  },
 
-- **Frontend**: React, Three.js, TypeScript
-- **Backend**: Python, Flask
-- **3D Engine**: Blender (headless)
-- **AI/ML**: TensorFlow, OpenCV
-- **Real-time**: WebSocket
+  'projects/blender-websocket.md': {
+    name: 'projects/blender-websocket.md',
+    language: 'md',
+    content: `# blender-websocket - Real-time 3D Communication
+
+## Overview
+WebSocket library for real-time Blender communication.
+Enables web apps to control Blender headless server.
+
+## GitHub: ⭐ 9 stars
+github.com/aman0x/blender-websocket
+
+## Use Cases
+- Real-time 3D rendering from web
+- Remote Blender control
+- 3D design collaboration
+
+## Tech Stack
+Python, WebSocket, Blender Python API
 `,
   },
 
   'contact.md': {
     name: 'contact.md',
     language: 'md',
-    content: `# Contact Information
+    content: `# Contact
 
-## Get In Touch
+**Email**: amanchandel4@gmail.com
+**Phone**: +91 7905400369
+**Location**: Delhi, India
 
-I'm always open to discussing new opportunities, interesting projects,
-or just having a chat about technology.
+**GitHub**: github.com/aman0x
+**LinkedIn**: linkedin.com/in/aman0x
 
-## Direct Contact
-
-- **Email**: amanchandel4@gmail.com
-- **Phone**: +91 7905400369
-- **Location**: Delhi, India
-
-## Online Presence
-
-- **GitHub**: https://github.com/aman0x
-- **LinkedIn**: https://linkedin.com/in/aman0x
-- **Website**: https://aman0x.com
-
-## Availability
-
-✅ **Open to opportunities**
-
-I'm currently exploring:
-- VP/Director of Engineering roles
-- Technical Co-founder opportunities
-- Consulting for AI/ML and 3D projects
-- Advisory positions for startups
-
-## Response Time
-
-I typically respond within **24-48 hours**.
-
----
-
-> "Let's build something amazing together."
+## Open To
+- VP/Director Engineering roles
+- Technical Co-founder
+- AI/ML Consulting
+- Advisory positions
 `,
   },
 
@@ -402,47 +421,19 @@ I typically respond within **24-48 hours**.
     language: 'md',
     content: `# aman0x
 
-> VP, Technology | Full Stack Engineer | 11+ Years Experience
+VP Technology | 11+ Years | Full Stack | AI/ML | 3D
 
-## Quick Start
+## Commands
+help, about, experience, skills, projects, contact
 
-\`\`\`bash
-$ help          # List all commands
-$ about         # About me
-$ experience    # Work history
-$ skills        # Technical skills
-$ projects      # Notable projects
-$ contact       # Get in touch
-\`\`\`
+## Files
+ls, cat [file], open [file]
 
-## View Files
-
-\`\`\`bash
-$ cat about.md
-$ cat experience.json
-$ cat projects/saarathi.md
-$ cat projects/wiseyatra.md
-$ ls projects/
-\`\`\`
-
-## Easter Eggs
-
-Try these commands:
-- \`neofetch\`
-- \`sudo hire-me\`
-- \`matrix\`
-
-## Tech Stack
-
-This portfolio is built with:
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- Terminal UI
-
----
-
-Made with ☕ by Aman Singh Chandel
+## Projects
+cat projects/keyward.md
+cat projects/saarathi.md
+cat projects/wiseyatra.md
+cat projects/siloho.md
 `,
   },
 };
