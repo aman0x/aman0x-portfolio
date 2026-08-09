@@ -11,8 +11,7 @@ interface HistoryItem {
   output: ReactNode;
 }
 
-const WELCOME_MESSAGE = `Welcome to aman0x terminal v1.0.0 (Pro)
-Type 'help' to see available commands, or 'ls' to browse files.`;
+const WELCOME_MESSAGE = `aman0x.sh v1.0 — Type 'help' for commands, 'projects' for work, 'contact' to connect`;
 
 interface TerminalProps {
   onToggleVersion: () => void;
@@ -278,32 +277,27 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
             <div className="flex flex-col md:flex-row gap-4 items-start mb-3">
               <DotImage
                 src="/aman.jpg"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
                 dotSize={2}
-                dotGap={2}
+                dotGap={1}
                 color="#3fb950"
               />
               <div>
-                <pre className="text-[var(--terminal-green)] text-[8px] md:text-[10px] leading-tight whitespace-pre">
-{`  █████╗ ███╗   ███╗ █████╗ ███╗   ██╗
- ██╔══██╗████╗ ████║██╔══██╗████╗  ██║
- ███████║██╔████╔██║███████║██╔██╗ ██║
- ██╔══██║██║╚██╔╝██║██╔══██║██║╚██╗██║
- ██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║
- ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝`}
-                </pre>
-                <p className="text-[var(--terminal-cyan)] mt-2 text-xs font-medium">VP, Technology @ Cloudastra</p>
-                <p className="text-[var(--terminal-text)] opacity-70 text-xs">Full Stack Engineer • 11+ Years • Delhi, India</p>
-                <div className="flex gap-1.5 mt-1.5 flex-wrap">
-                  <span className="text-[10px] px-1.5 py-0.5 bg-[var(--terminal-green)]/20 text-[var(--terminal-green)] rounded">Python</span>
-                  <span className="text-[10px] px-1.5 py-0.5 bg-[var(--terminal-cyan)]/20 text-[var(--terminal-cyan)] rounded">React</span>
-                  <span className="text-[10px] px-1.5 py-0.5 bg-[var(--terminal-purple)]/20 text-[var(--terminal-purple)] rounded">AI/ML</span>
-                  <span className="text-[10px] px-1.5 py-0.5 bg-[var(--terminal-yellow)]/20 text-[var(--terminal-yellow)] rounded">3D</span>
+                <p className="text-[var(--terminal-green)] text-lg md:text-xl font-bold tracking-wide">AMAN SINGH CHANDEL</p>
+                <p className="text-[var(--terminal-cyan)] text-xs font-medium mt-1">VP of Technology & Engineering Leader</p>
+                <p className="text-[var(--terminal-text)] opacity-60 text-[10px] mt-0.5">11+ Years • Architecture • AI/ML • Data Platforms • 3D Systems</p>
+                <div className="flex gap-1 mt-2 flex-wrap">
+                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-green)]/50 text-[var(--terminal-green)] rounded">Python</span>
+                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-cyan)]/50 text-[var(--terminal-cyan)] rounded">React</span>
+                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-purple)]/50 text-[var(--terminal-purple)] rounded">Django</span>
+                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-yellow)]/50 text-[var(--terminal-yellow)] rounded">K8s</span>
+                  <span className="text-[9px] px-1.5 py-0.5 border border-[var(--terminal-pink)]/50 text-[var(--terminal-pink)] rounded">Three.js</span>
                 </div>
+                <p className="text-[var(--terminal-text)] opacity-40 text-[10px] mt-2">Currently: Senior Full Stack Engineer @ Cloudastra Technologies</p>
               </div>
             </div>
-            <pre className="text-[var(--terminal-text)] whitespace-pre-wrap text-xs opacity-80">{WELCOME_MESSAGE}</pre>
+            <pre className="text-[var(--terminal-text)] whitespace-pre-wrap text-[10px] opacity-70">{WELCOME_MESSAGE}</pre>
           </div>
         )}
 
