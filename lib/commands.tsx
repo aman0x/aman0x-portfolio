@@ -17,30 +17,27 @@ const ASCII_NAME = `
 export const commands: Record<string, CommandOutput> = {
   help: {
     content: (
-      <div className="space-y-1">
-        <p className="text-[var(--terminal-yellow)] font-bold">Available commands:</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1 mt-2">
-          <p><span className="text-[var(--terminal-green)]">about</span>       - Who am I</p>
-          <p><span className="text-[var(--terminal-green)]">experience</span>  - Work history</p>
-          <p><span className="text-[var(--terminal-green)]">skills</span>      - Technical skills</p>
-          <p><span className="text-[var(--terminal-green)]">projects</span>    - Notable projects</p>
-          <p><span className="text-[var(--terminal-green)]">contact</span>     - Get in touch</p>
-          <p><span className="text-[var(--terminal-green)]">social</span>      - Social links</p>
-          <p><span className="text-[var(--terminal-green)]">resume</span>      - Download resume</p>
-          <p><span className="text-[var(--terminal-green)]">neofetch</span>    - System info</p>
+      <div className="space-y-1 text-xs">
+        <p className="text-[var(--terminal-yellow)] font-medium">Available commands:</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-0.5 mt-1">
+          <p><span className="text-[var(--terminal-green)]">about</span> - Who am I</p>
+          <p><span className="text-[var(--terminal-green)]">experience</span> - Work history</p>
+          <p><span className="text-[var(--terminal-green)]">skills</span> - Technical skills</p>
+          <p><span className="text-[var(--terminal-green)]">projects</span> - Notable projects</p>
+          <p><span className="text-[var(--terminal-green)]">contact</span> - Get in touch</p>
+          <p><span className="text-[var(--terminal-green)]">social</span> - Social links</p>
+          <p><span className="text-[var(--terminal-green)]">resume</span> - Download resume</p>
+          <p><span className="text-[var(--terminal-green)]">neofetch</span> - System info</p>
         </div>
-        <p className="text-[var(--terminal-yellow)] font-bold mt-3">File commands:</p>
-        <div className="mt-1">
-          <p><span className="text-[var(--terminal-cyan)]">ls</span>           - List files</p>
-          <p><span className="text-[var(--terminal-cyan)]">cat [file]</span>   - View file (e.g., cat about.md)</p>
-          <p><span className="text-[var(--terminal-cyan)]">open [file]</span>  - Open in editor</p>
+        <p className="text-[var(--terminal-yellow)] font-medium mt-2">File commands:</p>
+        <div className="mt-0.5">
+          <p><span className="text-[var(--terminal-cyan)]">ls</span> - List files | <span className="text-[var(--terminal-cyan)]">cat [file]</span> - View file | <span className="text-[var(--terminal-cyan)]">open [file]</span> - Open in editor</p>
         </div>
-        <p className="text-[var(--terminal-yellow)] font-bold mt-3">Other:</p>
-        <div className="mt-1">
-          <p><span className="text-[var(--terminal-purple)]">clear</span>      - Clear terminal</p>
-          <p><span className="text-[var(--terminal-purple)]">history</span>    - Command history</p>
+        <p className="text-[var(--terminal-yellow)] font-medium mt-2">Other:</p>
+        <div className="mt-0.5">
+          <p><span className="text-[var(--terminal-purple)]">clear</span> - Clear | <span className="text-[var(--terminal-purple)]">history</span> - Command history | <span className="text-[var(--terminal-purple)]">tree</span> - File tree</p>
         </div>
-        <p className="text-[var(--terminal-text)] opacity-50 mt-3">Tip: Use ↑↓ for history, Tab for autocomplete</p>
+        <p className="text-[var(--terminal-text)] opacity-50 mt-2">Tip: ↑↓ history, Tab autocomplete</p>
       </div>
     ),
   },

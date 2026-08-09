@@ -234,7 +234,7 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--terminal-bg)] flex flex-col">
+    <div className="h-screen bg-[var(--terminal-bg)] flex flex-col overflow-hidden">
       <div className="scanline" />
 
       {editorFile && (
@@ -270,40 +270,40 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
 
       <div
         ref={terminalRef}
-        className="flex-1 p-4 md:p-6 overflow-y-auto crt-effect"
+        className="flex-1 p-3 md:p-4 overflow-y-auto text-xs md:text-sm font-mono"
         onClick={focusInput}
       >
         {showWelcome && (
-          <div className="mb-6">
-            <div className="flex flex-col md:flex-row gap-6 items-start mb-4">
+          <div className="mb-4">
+            <div className="flex flex-col md:flex-row gap-4 items-start mb-3">
               <DotImage
                 src="/aman.jpg"
-                width={140}
-                height={140}
+                width={100}
+                height={100}
                 dotSize={2}
                 dotGap={2}
                 color="#3fb950"
               />
               <div>
-                <pre className="text-[var(--terminal-green)] text-[10px] md:text-xs leading-tight terminal-glow whitespace-pre">
-{`   █████╗ ███╗   ███╗ █████╗ ███╗   ██╗
-  ██╔══██╗████╗ ████║██╔══██╗████╗  ██║
-  ███████║██╔████╔██║███████║██╔██╗ ██║
-  ██╔══██║██║╚██╔╝██║██╔══██║██║╚██╗██║
-  ██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║
-  ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝`}
+                <pre className="text-[var(--terminal-green)] text-[8px] md:text-[10px] leading-tight whitespace-pre">
+{`  █████╗ ███╗   ███╗ █████╗ ███╗   ██╗
+ ██╔══██╗████╗ ████║██╔══██╗████╗  ██║
+ ███████║██╔████╔██║███████║██╔██╗ ██║
+ ██╔══██║██║╚██╔╝██║██╔══██║██║╚██╗██║
+ ██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║
+ ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝`}
                 </pre>
-                <p className="text-[var(--terminal-cyan)] mt-3 font-bold">VP, Technology @ Cloudastra</p>
-                <p className="text-[var(--terminal-text)] opacity-70 text-sm">Full Stack Engineer • 11+ Years • Delhi, India</p>
-                <div className="flex gap-2 mt-2">
-                  <span className="text-xs px-2 py-0.5 bg-[var(--terminal-green)]/20 text-[var(--terminal-green)] rounded">Python</span>
-                  <span className="text-xs px-2 py-0.5 bg-[var(--terminal-cyan)]/20 text-[var(--terminal-cyan)] rounded">React</span>
-                  <span className="text-xs px-2 py-0.5 bg-[var(--terminal-purple)]/20 text-[var(--terminal-purple)] rounded">AI/ML</span>
-                  <span className="text-xs px-2 py-0.5 bg-[var(--terminal-yellow)]/20 text-[var(--terminal-yellow)] rounded">3D</span>
+                <p className="text-[var(--terminal-cyan)] mt-2 text-xs font-medium">VP, Technology @ Cloudastra</p>
+                <p className="text-[var(--terminal-text)] opacity-70 text-xs">Full Stack Engineer • 11+ Years • Delhi, India</p>
+                <div className="flex gap-1.5 mt-1.5 flex-wrap">
+                  <span className="text-[10px] px-1.5 py-0.5 bg-[var(--terminal-green)]/20 text-[var(--terminal-green)] rounded">Python</span>
+                  <span className="text-[10px] px-1.5 py-0.5 bg-[var(--terminal-cyan)]/20 text-[var(--terminal-cyan)] rounded">React</span>
+                  <span className="text-[10px] px-1.5 py-0.5 bg-[var(--terminal-purple)]/20 text-[var(--terminal-purple)] rounded">AI/ML</span>
+                  <span className="text-[10px] px-1.5 py-0.5 bg-[var(--terminal-yellow)]/20 text-[var(--terminal-yellow)] rounded">3D</span>
                 </div>
               </div>
             </div>
-            <pre className="text-[var(--terminal-text)] whitespace-pre-wrap text-sm">{WELCOME_MESSAGE}</pre>
+            <pre className="text-[var(--terminal-text)] whitespace-pre-wrap text-xs opacity-80">{WELCOME_MESSAGE}</pre>
           </div>
         )}
 
@@ -344,9 +344,10 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
         </div>
 
         {suggestions.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-3 text-[var(--terminal-text)] opacity-60 text-sm">
+          <div className="mt-2 flex flex-wrap gap-2 text-[var(--terminal-text)] opacity-70 text-xs">
+            <span className="opacity-50">suggestions:</span>
             {suggestions.map(s => (
-              <span key={s} className="hover:text-[var(--terminal-green)] cursor-pointer" onClick={() => {
+              <span key={s} className="text-[var(--terminal-cyan)] hover:text-[var(--terminal-green)] cursor-pointer underline" onClick={() => {
                 const parts = input.split(' ');
                 parts[parts.length - 1] = s;
                 setInput(parts.join(' '));
