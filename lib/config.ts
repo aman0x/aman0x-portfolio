@@ -1,3 +1,3 @@
 export const config = {
-  defaultVersion: 'new' as 'old' | 'new',
+  defaultVersion: 'old' as 'old' | 'new',
 };
