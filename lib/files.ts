@@ -9,22 +9,39 @@ export const files: Record<string, FileContent> = {
     name: 'about.md',
     language: 'md',
     content: `# Aman Singh Chandel
-## VP of Technology | Engineering Leader
+## Engineering Leader | Senior Full Stack Engineer
 
-11+ years building and scaling commercially successful products from scratch.
-Expert in full-stack development, backend systems, and API integrations.
+11+ years building and scaling commercially successful products from zero —
+across fintech, OTT streaming, travel, interior design and industrial data.
 
-### Core Competencies
-- **Technical Leadership**: Built and led teams of 40+ engineers
-- **Architecture Design**: Multi-tenant platforms, microservices, distributed systems
-- **Product Development**: End-to-end product lifecycle management
-- **AI/ML Integration**: MLflow, computer vision, 3D rendering pipelines
+Two tenures as VP Technology: built one engineering team from scratch to 12+,
+scaled another past 40. Currently Senior Full Stack Engineer at Cloudastra,
+working on a multi-tenant AI-ready data platform for automotive and aerospace
+clients.
+
+### What I do well
+- **Zero to one**: taking a product from an idea to paying customers
+- **Engineering leadership**: hiring, mentoring, org design, technical estimation
+- **Data platforms**: ingestion, versioning, lineage, experiment tracking
+- **Full-stack depth**: Python/Django and React/TypeScript, end to end
+- **Platform**: Kubernetes, GKE, Docker, ArgoCD — the layer it all runs on
 
 ### Industries
-FinTech • EdTech • Travel Tech • Interior Design • OTT Streaming • E-commerce
+FinTech - Payments & Lending | OTT Streaming | Travel | Interior Design & 3D |
+Industrial / Engineering Data | E-commerce
+
+### Currently
+Deepening the machine learning side — moving from building the platforms that
+serve models to training, evaluating and shipping them.
 
 ### Education
-B.E. Information Technology - Kanpur Institute of Technology (2013)
+B.E. Information Technology
+Kanpur Institute of Technology, Uttar Pradesh - 2013
+
+### Contact
+amanchandel4@gmail.com | +91 7905400369 | Delhi, India
+
+Type \`msg your message here\` to reach me directly.
 `,
   },
 

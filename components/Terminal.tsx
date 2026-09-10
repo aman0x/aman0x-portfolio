@@ -11,7 +11,7 @@ interface HistoryItem {
   output: ReactNode;
 }
 
-const WELCOME_MESSAGE = `aman0x.sh v1.0 — Type 'help' for commands, 'projects' for work, 'contact' to connect`;
+const WELCOME_MESSAGE = `aman0x.sh — 'help' for all commands · 'experience' for work history · 'learn' for the build directory`;
 
 interface TerminalProps {
   onToggleVersion: () => void;
@@ -145,7 +145,9 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
       return;
     }
 
-    const result = getCommand(lowerCmd);
+    // Raw, not lowercased: getCommand lowercases for lookup internally, but
+    // `msg` needs the sender's original casing preserved.
+    const result = getCommand(trimmedCmd);
 
     if (result) {
       setHistory(prev => [...prev, { command: cmd, output: result.content }]);
@@ -286,8 +288,8 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
               />
               <div className="flex-1 min-w-0">
                 <p className="text-[var(--terminal-green)] text-sm md:text-lg font-bold tracking-wide">AMAN SINGH CHANDEL</p>
-                <p className="text-[var(--terminal-cyan)] text-[10px] md:text-xs font-medium">VP of Technology & Engineering Leader</p>
-                <p className="text-[var(--terminal-text)] opacity-60 text-[9px] md:text-[10px] hidden md:block">11+ Years • Architecture • AI/ML • Data Platforms • 3D</p>
+                <p className="text-[var(--terminal-cyan)] text-[10px] md:text-xs font-medium">Engineering Leader · Senior Full Stack Engineer</p>
+                <p className="text-[var(--terminal-text)] opacity-60 text-[9px] md:text-[10px] hidden md:block">11+ Years • ex-VP Technology ×2 • Data Platforms • AI/ML • Architecture</p>
                 <div className="flex gap-1 mt-1.5 flex-wrap">
                   <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-green)]/50 text-[var(--terminal-green)] rounded">Python</span>
                   <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-cyan)]/50 text-[var(--terminal-cyan)] rounded">React</span>
@@ -297,6 +299,15 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
               </div>
             </div>
             <pre className="text-[var(--terminal-text)] whitespace-pre-wrap text-[9px] md:text-[10px] opacity-60">{WELCOME_MESSAGE}</pre>
+            <div className="mt-2 px-2 py-1.5 border border-[var(--terminal-green)]/40 rounded bg-[var(--terminal-green)]/5">
+              <p className="text-[9px] md:text-[10px]">
+                <span className="text-[var(--terminal-green)] font-medium">Want to reach me?</span>
+                <span className="opacity-70"> Type </span>
+                <span className="text-[var(--terminal-green)]">msg</span>
+                <span className="opacity-70"> followed by your message — e.g. </span>
+                <span className="text-[var(--terminal-cyan)]">msg Hi Aman, we&apos;re hiring — are you open to a chat?</span>
+              </p>
+            </div>
           </div>
         )}
 
