@@ -48,6 +48,13 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
       return;
     }
 
+    // Unlike clear, home brings the intro card back — a way out of a long session.
+    if (lowerCmd === 'home' || lowerCmd === 'cd ~' || lowerCmd === 'cd') {
+      setHistory([]);
+      setShowWelcome(true);
+      return;
+    }
+
     if (lowerCmd === 'history') {
       const historyOutput = (
         <div className="space-y-1">
@@ -66,7 +73,7 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
       const path = lowerCmd.replace('ls', '').trim() || '.';
       const items = listDirectory(path);
       const output = (
-        <div className="flex flex-wrap gap-3 text-[10px]">
+        <div className="flex flex-wrap gap-3 text-xs">
           {items.map((item, i) => (
             <span
               key={i}
@@ -258,13 +265,13 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
             <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#d29922]" />
             <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#3fb950]" />
           </div>
-          <span className="ml-2 md:ml-4 text-[10px] md:text-xs text-[var(--terminal-text)] opacity-70">
+          <span className="ml-2 md:ml-4 text-xs md:text-sm text-[var(--terminal-text)] opacity-70">
             aman0x — bash
           </span>
         </div>
         <button
           onClick={onToggleVersion}
-          className="px-2 py-0.5 text-[9px] md:text-xs bg-[var(--terminal-yellow)]/20 text-[var(--terminal-yellow)] rounded hover:bg-[var(--terminal-yellow)]/30 transition-colors"
+          className="px-2 py-0.5 text-[11px] md:text-sm bg-[var(--terminal-yellow)]/20 text-[var(--terminal-yellow)] rounded hover:bg-[var(--terminal-yellow)]/30 transition-colors"
         >
           Notepad++
         </button>
@@ -272,38 +279,73 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
 
       <div
         ref={terminalRef}
-        className="flex-1 p-3 md:p-4 overflow-y-auto text-[11px] font-mono"
+        className="flex-1 p-3 md:p-4 overflow-y-auto text-[13px] font-mono"
         onClick={focusInput}
       >
         {showWelcome && (
           <div className="mb-3">
-            <div className="flex gap-3 items-start mb-2">
+            <div className="flex gap-3 md:gap-4 items-start mb-3">
               <DotImage
                 src="/aman.jpg"
-                width={60}
-                height={60}
+                width={72}
+                height={72}
                 dotSize={2}
                 dotGap={1}
                 color="#3fb950"
               />
               <div className="flex-1 min-w-0">
-                <p className="text-[var(--terminal-green)] text-sm md:text-lg font-bold tracking-wide">AMAN SINGH CHANDEL</p>
-                <p className="text-[var(--terminal-cyan)] text-[10px] md:text-xs font-medium">Engineering Leader · Senior Full Stack Engineer</p>
-                <p className="text-[var(--terminal-text)] opacity-60 text-[9px] md:text-[10px] hidden md:block">11+ Years • ex-VP Technology ×2 • Data Platforms • AI/ML • Architecture</p>
-                <div className="flex gap-1 mt-1.5 flex-wrap">
-                  <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-green)]/50 text-[var(--terminal-green)] rounded">Python</span>
-                  <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-cyan)]/50 text-[var(--terminal-cyan)] rounded">React</span>
-                  <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-purple)]/50 text-[var(--terminal-purple)] rounded">Django</span>
-                  <span className="text-[8px] md:text-[9px] px-1 py-0.5 border border-[var(--terminal-yellow)]/50 text-[var(--terminal-yellow)] rounded hidden md:inline">K8s</span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <p className="text-[var(--terminal-green)] text-base md:text-2xl font-bold tracking-wide leading-tight">
+                    AMAN SINGH CHANDEL
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-[10px] md:text-[11px] px-1.5 py-0.5 rounded border border-[var(--terminal-green)]/50 bg-[var(--terminal-green)]/10 text-[var(--terminal-green)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--terminal-green)] cursor-blink" />
+                    Open to opportunities
+                  </span>
+                </div>
+
+                <p className="text-[var(--terminal-cyan)] text-xs md:text-sm font-medium mt-0.5">
+                  Engineering Leader <span className="opacity-40">·</span> Senior Full Stack Engineer
+                </p>
+
+                <p className="text-[var(--terminal-text)] opacity-60 text-[11px] md:text-xs mt-0.5">
+                  11+ years <span className="opacity-40">·</span> ex-VP Technology ×2{' '}
+                  <span className="opacity-40">·</span> Delhi, India
+                </p>
+
+                <div className="flex gap-x-4 gap-y-0.5 mt-2 flex-wrap text-[11px] md:text-xs">
+                  <span>
+                    <span className="text-[var(--terminal-yellow)] font-medium">40+</span>
+                    <span className="opacity-50"> engineers led</span>
+                  </span>
+                  <span>
+                    <span className="text-[var(--terminal-yellow)] font-medium">6</span>
+                    <span className="opacity-50"> companies</span>
+                  </span>
+                  <span>
+                    <span className="text-[var(--terminal-yellow)] font-medium">0→1</span>
+                    <span className="opacity-50"> products shipped</span>
+                  </span>
+                </div>
+
+                <div className="flex gap-1 mt-2 flex-wrap">
+                  <span className="text-[10px] md:text-[11px] px-1.5 py-0.5 border border-[var(--terminal-green)]/50 text-[var(--terminal-green)] rounded">Python</span>
+                  <span className="text-[10px] md:text-[11px] px-1.5 py-0.5 border border-[var(--terminal-cyan)]/50 text-[var(--terminal-cyan)] rounded">React</span>
+                  <span className="text-[10px] md:text-[11px] px-1.5 py-0.5 border border-[var(--terminal-purple)]/50 text-[var(--terminal-purple)] rounded">Django</span>
+                  <span className="text-[10px] md:text-[11px] px-1.5 py-0.5 border border-[var(--terminal-yellow)]/50 text-[var(--terminal-yellow)] rounded">Kubernetes</span>
+                  <span className="text-[10px] md:text-[11px] px-1.5 py-0.5 border border-[var(--terminal-pink)]/50 text-[var(--terminal-pink)] rounded hidden md:inline">MLflow</span>
+                  <span className="text-[10px] md:text-[11px] px-1.5 py-0.5 border border-[var(--terminal-text)]/30 text-[var(--terminal-text)]/70 rounded hidden md:inline">TypeScript</span>
                 </div>
               </div>
             </div>
-            <pre className="text-[var(--terminal-text)] whitespace-pre-wrap text-[9px] md:text-[10px] opacity-60">{WELCOME_MESSAGE}</pre>
-            <div className="mt-2 px-2 py-1.5 border border-[var(--terminal-green)]/40 rounded bg-[var(--terminal-green)]/5">
-              <p className="text-[9px] md:text-[10px]">
+
+            <pre className="text-[var(--terminal-text)] whitespace-pre-wrap text-[11px] md:text-xs opacity-60">{WELCOME_MESSAGE}</pre>
+
+            <div className="mt-2.5 px-2.5 py-2 border border-[var(--terminal-green)]/40 rounded bg-[var(--terminal-green)]/5">
+              <p className="text-[11px] md:text-xs leading-relaxed">
                 <span className="text-[var(--terminal-green)] font-medium">Want to reach me?</span>
                 <span className="opacity-70"> Type </span>
-                <span className="text-[var(--terminal-green)]">msg</span>
+                <span className="text-[var(--terminal-green)] font-medium">msg</span>
                 <span className="opacity-70"> followed by your message — e.g. </span>
                 <span className="text-[var(--terminal-cyan)]">msg Hi Aman, we&apos;re hiring — are you open to a chat?</span>
               </p>
@@ -313,7 +355,7 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
 
         {history.map((item, index) => (
           <div key={index} className="mb-2">
-            <div className="flex items-center gap-1 flex-wrap text-[10px]">
+            <div className="flex items-center gap-1 flex-wrap text-xs">
               <span className="text-[var(--terminal-green)]">visitor@aman0x</span>
               <span className="text-[var(--terminal-text)] opacity-50">:</span>
               <span className="text-[var(--terminal-cyan)]">~</span>
@@ -324,7 +366,7 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
           </div>
         ))}
 
-        <div className="flex items-center gap-1 flex-wrap text-[10px]">
+        <div className="flex items-center gap-1 flex-wrap text-xs">
           <span className="text-[var(--terminal-green)]">visitor@aman0x</span>
           <span className="text-[var(--terminal-text)] opacity-50">:</span>
           <span className="text-[var(--terminal-cyan)]">~</span>
@@ -348,7 +390,7 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
         </div>
 
         {suggestions.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-2 text-[var(--terminal-text)] opacity-70 text-xs">
+          <div className="mt-2 flex flex-wrap gap-2 text-[var(--terminal-text)] opacity-70 text-sm">
             <span className="opacity-50">suggestions:</span>
             {suggestions.map(s => (
               <span key={s} className="text-[var(--terminal-cyan)] hover:text-[var(--terminal-green)] cursor-pointer underline" onClick={() => {
@@ -363,7 +405,7 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
         )}
       </div>
 
-      <footer className="px-2 md:px-3 py-1 bg-[#161b22] border-t border-[#30363d] text-[9px] md:text-[10px] text-[var(--terminal-text)]">
+      <footer className="px-2 md:px-3 py-1 bg-[#161b22] border-t border-[#30363d] text-[11px] md:text-xs text-[var(--terminal-text)]">
         <div className="flex flex-wrap gap-x-2 md:gap-x-3 gap-y-0.5 opacity-70">
           <span className="text-[var(--terminal-yellow)]">Try:</span>
           <span className="text-[var(--terminal-green)]">about</span>

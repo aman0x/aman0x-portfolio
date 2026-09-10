@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { curriculum, getModule, getStep, totalSteps, LearnModule, LearnStep } from '@/lib/learn';
-import { profile, buildMailto } from '@/lib/profile';
+import { profile } from '@/lib/profile';
+import MessageSender from '@/components/MessageSender';
 
 export interface CommandOutput {
   content: ReactNode;
@@ -42,7 +43,7 @@ function StepBlock({ mod, step }: { mod: LearnModule; step: LearnStep }) {
 function learnIndex(): CommandOutput {
   return {
     content: (
-      <div className="space-y-2 text-xs">
+      <div className="space-y-2 text-sm">
         <p className="text-[var(--terminal-yellow)]">{'// Build Directory'}</p>
         <p className="opacity-90">
           How to take a product from nothing to real traffic. {curriculum.length} modules,{' '}
@@ -70,7 +71,7 @@ function learnIndex(): CommandOutput {
 function learnModule(mod: LearnModule): CommandOutput {
   return {
     content: (
-      <div className="space-y-2 text-xs">
+      <div className="space-y-2 text-sm">
         <p className="text-[var(--terminal-yellow)]">
           {'// Module '}{String(mod.num).padStart(2, '0')} — {mod.title}
         </p>
@@ -91,7 +92,7 @@ function learnModule(mod: LearnModule): CommandOutput {
 function learnStep(mod: LearnModule, step: LearnStep): CommandOutput {
   return {
     content: (
-      <div className="space-y-2 text-xs">
+      <div className="space-y-2 text-sm">
         <p className="text-[var(--terminal-yellow)]">
           {'// '}{mod.title} · step {step.id}
         </p>
@@ -128,7 +129,7 @@ function resolveLearn(input: string): CommandOutput | null {
   if (!mod) {
     return {
       content: (
-        <div className="space-y-1 text-xs">
+        <div className="space-y-1 text-sm">
           <p className="text-[var(--terminal-red)]">learn: no module &apos;{parts[1]}&apos;</p>
           <p className="text-[var(--terminal-text)] opacity-50">
             Modules: {curriculum.map((m) => m.id).join(' · ')}
@@ -143,7 +144,7 @@ function resolveLearn(input: string): CommandOutput | null {
   if (!step) {
     return {
       content: (
-        <p className="text-[var(--terminal-red)] text-xs">
+        <p className="text-[var(--terminal-red)] text-sm">
           learn: {mod.id} has steps 1–{mod.steps.length}
         </p>
       ),
@@ -155,10 +156,11 @@ function resolveLearn(input: string): CommandOutput | null {
 function msgUsage(): CommandOutput {
   return {
     content: (
-      <div className="space-y-2 text-xs">
+      <div className="space-y-2 text-sm">
         <p className="text-[var(--terminal-yellow)]">{'// Send me a message'}</p>
         <p className="opacity-90">
-          Type your message after the command and it opens prefilled in your email client.
+          Type your message after the command and it is sent straight to me — no email client,
+          no form, no sign-up.
         </p>
         <div className="border-l pl-2" style={{ borderColor: colorVar('green') }}>
           <p className="text-[var(--terminal-text)] opacity-50">usage</p>
@@ -169,7 +171,7 @@ function msgUsage(): CommandOutput {
           </p>
         </div>
         <p className="text-[var(--terminal-text)] opacity-50">
-          Include your name, company and a way to reach you for a faster reply. Goes straight to{' '}
+          Include your name, company and an email if you want a reply. Prefer regular email?{' '}
           <a href={`mailto:${profile.email}`} className="text-[var(--terminal-cyan)]">{profile.email}</a>.
         </p>
       </div>
@@ -178,31 +180,7 @@ function msgUsage(): CommandOutput {
 }
 
 function msgCompose(message: string): CommandOutput {
-  return {
-    content: (
-      <div className="space-y-2 text-xs">
-        <p className="text-[var(--terminal-yellow)]">{'// Message ready'}</p>
-        <div className="border-l pl-2" style={{ borderColor: colorVar('cyan') }}>
-          <p className="text-[var(--terminal-text)] opacity-50">to</p>
-          <p className="opacity-80">{profile.email}</p>
-          <p className="text-[var(--terminal-text)] opacity-50 mt-1">message</p>
-          <p className="opacity-90 whitespace-pre-wrap break-words">{message}</p>
-        </div>
-        <p className="mt-1">
-          <a
-            href={buildMailto(message)}
-            className="inline-block px-2 py-1 border border-[var(--terminal-green)] text-[var(--terminal-green)] rounded hover:bg-[var(--terminal-green)]/15 transition-colors"
-          >
-            → Open in email client
-          </a>
-        </p>
-        <p className="text-[var(--terminal-text)] opacity-40">
-          No mail client? Copy the address above, or reach me on{' '}
-          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-[var(--terminal-cyan)]">LinkedIn</a>.
-        </p>
-      </div>
-    ),
-  };
+  return { content: <MessageSender message={message} /> };
 }
 
 /** Resolves `msg` and `msg <message>`. */
@@ -227,7 +205,7 @@ const ASCII_NAME = `
 export const commands: Record<string, CommandOutput> = {
   help: {
     content: (
-      <div className="space-y-1 text-xs">
+      <div className="space-y-1 text-sm">
         <p className="text-[var(--terminal-yellow)] font-medium">Available commands:</p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-0.5 mt-1">
           <p><span className="text-[var(--terminal-green)]">about</span> - Who am I</p>
@@ -254,7 +232,7 @@ export const commands: Record<string, CommandOutput> = {
         </div>
         <p className="text-[var(--terminal-yellow)] font-medium mt-2">Other:</p>
         <div className="mt-0.5">
-          <p><span className="text-[var(--terminal-purple)]">clear</span> - Clear | <span className="text-[var(--terminal-purple)]">history</span> - Command history | <span className="text-[var(--terminal-purple)]">tree</span> - File tree</p>
+          <p><span className="text-[var(--terminal-purple)]">home</span> - Back to start | <span className="text-[var(--terminal-purple)]">clear</span> - Clear | <span className="text-[var(--terminal-purple)]">history</span> - Command history | <span className="text-[var(--terminal-purple)]">tree</span> - File tree</p>
         </div>
         <p className="text-[var(--terminal-text)] opacity-50 mt-2">Tip: ↑↓ history, Tab autocomplete</p>
       </div>
@@ -263,8 +241,8 @@ export const commands: Record<string, CommandOutput> = {
 
   neofetch: {
     content: (
-      <div className="flex flex-col md:flex-row gap-4 items-start text-xs">
-        <pre className="text-[var(--terminal-green)] text-[8px] leading-tight hidden md:block">{ASCII_NAME}</pre>
+      <div className="flex flex-col md:flex-row gap-4 items-start text-sm">
+        <pre className="text-[var(--terminal-green)] text-[10px] leading-tight hidden md:block">{ASCII_NAME}</pre>
         <div className="space-y-0.5">
           <p className="text-[var(--terminal-cyan)] font-medium">aman0x@cloudastra</p>
           <p className="text-[var(--terminal-text)] opacity-40">───────────────────</p>
@@ -290,7 +268,7 @@ export const commands: Record<string, CommandOutput> = {
 
   about: {
     content: (
-      <div className="space-y-2 text-xs">
+      <div className="space-y-2 text-sm">
         <p className="text-[var(--terminal-yellow)]">{'// About'}</p>
         <p className="opacity-90">
           Engineering leader with <span className="text-[var(--terminal-cyan)]">11+ years</span> building
@@ -318,7 +296,7 @@ export const commands: Record<string, CommandOutput> = {
 
   experience: {
     content: (
-      <div className="space-y-2 text-xs">
+      <div className="space-y-2 text-sm">
         <p className="text-[var(--terminal-yellow)]">{'// Experience — 11+ years'}</p>
 
         <div className="border-l border-[var(--terminal-green)] pl-2">
@@ -372,7 +350,7 @@ export const commands: Record<string, CommandOutput> = {
 
   skills: {
     content: (
-      <div className="space-y-2 text-xs">
+      <div className="space-y-2 text-sm">
         <p className="text-[var(--terminal-yellow)]">{'// Technical Skills'}</p>
 
         <div className="space-y-1.5">
@@ -423,56 +401,56 @@ export const commands: Record<string, CommandOutput> = {
 
   projects: {
     content: (
-      <div className="space-y-2 text-xs">
+      <div className="space-y-2 text-sm">
         <p className="text-[var(--terminal-yellow)]">{'// Selected Work'}</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
           <div className="border border-[var(--terminal-green)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-green)] font-medium">Key Ward</p>
-            <p className="opacity-50 text-[10px]">AI-ready data platform · automotive &amp; aerospace</p>
-            <p className="opacity-40 text-[10px]">DLT, MLflow, LakeFS, Spark, Superset, GKE</p>
+            <p className="opacity-50 text-xs">AI-ready data platform · automotive &amp; aerospace</p>
+            <p className="opacity-40 text-xs">DLT, MLflow, LakeFS, Spark, Superset, GKE</p>
           </div>
 
           <div className="border border-[var(--terminal-cyan)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-cyan)] font-medium">Saarathi Finance</p>
-            <p className="opacity-50 text-[10px]">NBFC digital lending for MSMEs</p>
-            <p className="opacity-40 text-[10px]">Django, Temporal.io, Keycloak, CIBIL/Experian/CRIF</p>
+            <p className="opacity-50 text-xs">NBFC digital lending for MSMEs</p>
+            <p className="opacity-40 text-xs">Django, Temporal.io, Keycloak, CIBIL/Experian/CRIF</p>
           </div>
 
           <div className="border border-[var(--terminal-yellow)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-yellow)] font-medium">Siloho</p>
-            <p className="opacity-50 text-[10px]">AI interior design · VP Technology</p>
-            <p className="opacity-40 text-[10px]">Vue, Django, Blender + Unity render pipeline</p>
+            <p className="opacity-50 text-xs">AI interior design · VP Technology</p>
+            <p className="opacity-40 text-xs">Vue, Django, Blender + Unity render pipeline</p>
           </div>
 
           <div className="border border-[var(--terminal-pink)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-pink)] font-medium">ftcash</p>
-            <p className="opacity-50 text-[10px]">Payments &amp; lending · VP Technology</p>
-            <p className="opacity-40 text-[10px]">Billing engine, Razorpay/ICICI, loan management</p>
+            <p className="opacity-50 text-xs">Payments &amp; lending · VP Technology</p>
+            <p className="opacity-40 text-xs">Billing engine, Razorpay/ICICI, loan management</p>
           </div>
 
           <div className="border border-[var(--terminal-purple)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-purple)] font-medium">WiseYatra</p>
-            <p className="opacity-50 text-[10px]">Travel booking — flights, hotels, activities</p>
-            <p className="opacity-40 text-[10px]">Next.js, TypeScript, Tailwind, Zustand, Maps API</p>
+            <p className="opacity-50 text-xs">Travel booking — flights, hotels, activities</p>
+            <p className="opacity-40 text-xs">Next.js, TypeScript, Tailwind, Zustand, Maps API</p>
           </div>
 
           <div className="border border-[var(--terminal-cyan)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-cyan)] font-medium">Volo Health TPA</p>
-            <p className="opacity-50 text-[10px]">IRDA-licensed health claims platform</p>
-            <p className="opacity-40 text-[10px]">Claims, registration &amp; grievance workflows</p>
+            <p className="opacity-50 text-xs">IRDA-licensed health claims platform</p>
+            <p className="opacity-40 text-xs">Claims, registration &amp; grievance workflows</p>
           </div>
 
           <div className="border border-[var(--terminal-pink)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-pink)] font-medium">Taffi</p>
-            <p className="opacity-50 text-[10px]">Fashion discovery &amp; stylist matching</p>
-            <p className="opacity-40 text-[10px]">Led planning and delivery across the stack</p>
+            <p className="opacity-50 text-xs">Fashion discovery &amp; stylist matching</p>
+            <p className="opacity-40 text-xs">Led planning and delivery across the stack</p>
           </div>
 
           <div className="border border-[var(--terminal-green)]/40 p-1.5 rounded">
             <p className="text-[var(--terminal-green)] font-medium">Eros Now</p>
-            <p className="opacity-50 text-[10px]">OTT streaming at scale</p>
-            <p className="opacity-40 text-[10px]">PHP → Python API migration, RabbitMQ, MongoDB</p>
+            <p className="opacity-50 text-xs">OTT streaming at scale</p>
+            <p className="opacity-40 text-xs">PHP → Python API migration, RabbitMQ, MongoDB</p>
           </div>
         </div>
 
@@ -486,7 +464,7 @@ export const commands: Record<string, CommandOutput> = {
 
   contact: {
     content: (
-      <div className="space-y-2 text-xs">
+      <div className="space-y-2 text-sm">
         <p className="text-[var(--terminal-yellow)]">{'// Contact'}</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -518,7 +496,7 @@ export const commands: Record<string, CommandOutput> = {
 
   social: {
     content: (
-      <div className="space-y-1 text-xs">
+      <div className="space-y-1 text-sm">
         <p className="text-[var(--terminal-yellow)]">// Social</p>
         <p><span className="text-[var(--terminal-purple)]">GitHub</span> <a href="https://github.com/aman0x" target="_blank" rel="noopener noreferrer" className="text-[var(--terminal-cyan)]">→ github.com/aman0x</a></p>
         <p><span className="text-[var(--terminal-purple)]">LinkedIn</span> <a href="https://linkedin.com/in/aman0x" target="_blank" rel="noopener noreferrer" className="text-[var(--terminal-cyan)]">→ linkedin.com/in/aman0x</a></p>
@@ -529,7 +507,7 @@ export const commands: Record<string, CommandOutput> = {
 
   resume: {
     content: (
-      <div className="space-y-1 text-xs">
+      <div className="space-y-1 text-sm">
         <p className="text-[var(--terminal-yellow)]">// Resume</p>
         <p><a href="/Aman-Chandel-Resume.pdf" download className="text-[var(--terminal-green)]">Download Resume (PDF)</a></p>
       </div>
@@ -571,7 +549,7 @@ export const commands: Record<string, CommandOutput> = {
 
 export const commandList = [
   'help', 'about', 'experience', 'skills', 'projects', 'learn', 'msg', 'contact', 'social', 'resume',
-  'neofetch', 'clear', 'history', 'ls', 'cat', 'open', 'whoami', 'pwd', 'date'
+  'neofetch', 'home', 'clear', 'history', 'ls', 'cat', 'open', 'whoami', 'pwd', 'date'
 ];
 
 export function getCommand(input: string): CommandOutput | null {
