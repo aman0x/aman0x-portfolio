@@ -1,8 +1,154 @@
 import { ReactNode } from 'react';
+import { curriculum, getModule, getStep, totalSteps, LearnModule, LearnStep } from '@/lib/learn';
 
 export interface CommandOutput {
   content: ReactNode;
   openFile?: string;
+}
+
+const colorVar = (c: string) => `var(--terminal-${c})`;
+
+function ModuleLine({ mod }: { mod: LearnModule }) {
+  return (
+    <div className="flex gap-2">
+      <span className="text-[var(--terminal-text)] opacity-40 w-4 shrink-0">{String(mod.num).padStart(2, '0')}</span>
+      <div className="min-w-0">
+        <p>
+          <span style={{ color: colorVar(mod.color) }}>{mod.id}</span>
+          <span className="opacity-90"> — {mod.title}</span>
+          <span className="text-[var(--terminal-text)] opacity-40"> ({mod.steps.length})</span>
+        </p>
+        <p className="text-[var(--terminal-text)] opacity-50">{mod.summary}</p>
+      </div>
+    </div>
+  );
+}
+
+function StepBlock({ mod, step }: { mod: LearnModule; step: LearnStep }) {
+  return (
+    <div className="border-l pl-2" style={{ borderColor: colorVar(mod.color) }}>
+      <p>
+        <span className="text-[var(--terminal-text)] opacity-40">{step.id}</span>{' '}
+        <span className="text-[var(--terminal-cyan)] font-medium">{step.title}</span>
+      </p>
+      <p className="opacity-70"><span className="text-[var(--terminal-green)]">build</span> {step.build}</p>
+      <p className="opacity-70"><span className="text-[var(--terminal-purple)]">learn</span> {step.learn}</p>
+      <p className="opacity-90"><span className="text-[var(--terminal-yellow)]">gotcha</span> {step.gotcha}</p>
+    </div>
+  );
+}
+
+function learnIndex(): CommandOutput {
+  return {
+    content: (
+      <div className="space-y-2 text-xs">
+        <p className="text-[var(--terminal-yellow)]">{'// Build Directory'}</p>
+        <p className="opacity-90">
+          How to take a product from nothing to real traffic. {curriculum.length} modules,{' '}
+          {totalSteps} steps, drawn from running a live PWA with a generative content pipeline.
+        </p>
+        <p className="text-[var(--terminal-text)] opacity-50">
+          Every step is build / learn / gotcha. The gotchas are the point — they are the things
+          not in the docs, that cost a weekend each.
+        </p>
+        <div className="space-y-1.5 mt-2">
+          {curriculum.map((mod) => (
+            <ModuleLine key={mod.id} mod={mod} />
+          ))}
+        </div>
+        <p className="text-[var(--terminal-text)] opacity-40 mt-2">
+          → <span className="text-[var(--terminal-cyan)]">learn [module]</span> for the steps ·{' '}
+          <span className="text-[var(--terminal-cyan)]">learn [module] [n]</span> for one step ·{' '}
+          <span className="text-[var(--terminal-cyan)]">open build-guide.md</span> for the overview
+        </p>
+      </div>
+    ),
+  };
+}
+
+function learnModule(mod: LearnModule): CommandOutput {
+  return {
+    content: (
+      <div className="space-y-2 text-xs">
+        <p className="text-[var(--terminal-yellow)]">
+          {'// Module '}{String(mod.num).padStart(2, '0')} — {mod.title}
+        </p>
+        <p className="opacity-70">{mod.summary}</p>
+        <div className="space-y-2 mt-2">
+          {mod.steps.map((step) => (
+            <StepBlock key={step.id} mod={mod} step={step} />
+          ))}
+        </div>
+        <p className="text-[var(--terminal-text)] opacity-40 mt-2">
+          → <span className="text-[var(--terminal-cyan)]">learn</span> for all modules
+        </p>
+      </div>
+    ),
+  };
+}
+
+function learnStep(mod: LearnModule, step: LearnStep): CommandOutput {
+  return {
+    content: (
+      <div className="space-y-2 text-xs">
+        <p className="text-[var(--terminal-yellow)]">
+          {'// '}{mod.title} · step {step.id}
+        </p>
+        <p className="text-[var(--terminal-cyan)] font-medium">{step.title}</p>
+        <div className="space-y-1.5 mt-1">
+          <div className="border-l pl-2" style={{ borderColor: colorVar('green') }}>
+            <p className="text-[var(--terminal-green)]">what you build</p>
+            <p className="opacity-90">{step.build}</p>
+          </div>
+          <div className="border-l pl-2" style={{ borderColor: colorVar('purple') }}>
+            <p className="text-[var(--terminal-purple)]">what you learn</p>
+            <p className="opacity-90">{step.learn}</p>
+          </div>
+          <div className="border-l pl-2" style={{ borderColor: colorVar('yellow') }}>
+            <p className="text-[var(--terminal-yellow)]">the gotcha</p>
+            <p className="opacity-90">{step.gotcha}</p>
+          </div>
+        </div>
+        <p className="text-[var(--terminal-text)] opacity-40 mt-2">
+          → <span className="text-[var(--terminal-cyan)]">learn {mod.id}</span> for the full module
+        </p>
+      </div>
+    ),
+  };
+}
+
+/** Resolves `learn`, `learn <module>`, and `learn <module> <step>`. */
+function resolveLearn(input: string): CommandOutput | null {
+  const parts = input.split(/\s+/).filter(Boolean);
+  if (parts[0] !== 'learn') return null;
+  if (parts.length === 1) return learnIndex();
+
+  const mod = getModule(parts[1]);
+  if (!mod) {
+    return {
+      content: (
+        <div className="space-y-1 text-xs">
+          <p className="text-[var(--terminal-red)]">learn: no module &apos;{parts[1]}&apos;</p>
+          <p className="text-[var(--terminal-text)] opacity-50">
+            Modules: {curriculum.map((m) => m.id).join(' · ')}
+          </p>
+        </div>
+      ),
+    };
+  }
+  if (parts.length === 2) return learnModule(mod);
+
+  const step = getStep(parts[1], parts[2]);
+  if (!step) {
+    return {
+      content: (
+        <p className="text-[var(--terminal-red)] text-xs">
+          learn: {mod.id} has steps 1–{mod.steps.length}
+        </p>
+      ),
+    };
+  }
+  return learnStep(mod, step);
 }
 
 const ASCII_NAME = `
@@ -24,6 +170,7 @@ export const commands: Record<string, CommandOutput> = {
           <p><span className="text-[var(--terminal-green)]">experience</span> - Work history</p>
           <p><span className="text-[var(--terminal-green)]">skills</span> - Technical skills</p>
           <p><span className="text-[var(--terminal-green)]">projects</span> - Notable projects</p>
+          <p><span className="text-[var(--terminal-green)]">learn</span> - Build directory</p>
           <p><span className="text-[var(--terminal-green)]">contact</span> - Get in touch</p>
           <p><span className="text-[var(--terminal-green)]">social</span> - Social links</p>
           <p><span className="text-[var(--terminal-green)]">resume</span> - Download resume</p>
@@ -313,7 +460,7 @@ export const commands: Record<string, CommandOutput> = {
 };
 
 export const commandList = [
-  'help', 'about', 'experience', 'skills', 'projects', 'contact', 'social', 'resume',
+  'help', 'about', 'experience', 'skills', 'projects', 'learn', 'contact', 'social', 'resume',
   'neofetch', 'clear', 'history', 'ls', 'cat', 'open', 'whoami', 'pwd', 'date'
 ];
 
@@ -322,6 +469,11 @@ export function getCommand(input: string): CommandOutput | null {
 
   if (commands[trimmed]) {
     return commands[trimmed];
+  }
+
+  const learn = resolveLearn(trimmed);
+  if (learn) {
+    return learn;
   }
 
   return null;

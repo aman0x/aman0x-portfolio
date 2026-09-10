@@ -436,6 +436,71 @@ cat projects/wiseyatra.md
 cat projects/siloho.md
 `,
   },
+
+  'build-guide.md': {
+    name: 'build-guide.md',
+    language: 'md',
+    content: `# The Build Directory
+## From nothing to real traffic
+
+A directory of what it actually takes to build and run a product at scale,
+written from running a live PWA -- a party game plus a kids story engine, with
+a generative content pipeline behind it.
+
+Run \`learn\` in the terminal to browse it.
+
+### Why this exists
+
+Most tutorials stop at "it works and I deployed it". The interesting part
+starts after that, and almost nobody writes it down:
+
+- Security rules that are not \`if true\` with a comment saying "tighten later"
+- Analytics that can answer a question you had not thought of yet
+- SEO for a single-page app, where most of the standard advice does not apply
+- The cost model, before the bill arrives
+- ML on your own users' behaviour, not a toy dataset
+- Generative pipelines that survive contact with a deadline
+
+### Shape
+
+10 modules, 44 steps. Every step is three lines:
+
+| Line | Meaning |
+|------|---------|
+| build | What you make |
+| learn | The concept underneath it |
+| gotcha | The thing not in the docs, that costs a weekend |
+
+The gotchas are the point. Everything else is available elsewhere.
+
+### Modules
+
+01  ship     Ship something real
+02  data     Model your data
+03  secure   Lock it down
+04  measure  Know what happens
+05  found    Get found
+06  offline  Work offline, come back
+07  deploy   Ship safely, repeatedly
+08  scale    Survive success
+09  ml       Learn from your users
+10  genai    Generate your content
+
+### Navigating
+
+    learn              all modules
+    learn secure       one module, all steps
+    learn secure 2     a single step, expanded
+
+### A note on scope
+
+This is the method, not the source. Product internals, credentials and
+customer specifics stay out of it -- the patterns are what transfer, and
+they transfer to almost any stack.
+
+Questions, corrections, war stories: amanchandel4@gmail.com
+`,
+  },
 };
 
 export const fileList = Object.keys(files);

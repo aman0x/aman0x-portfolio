@@ -130,6 +130,7 @@ export default function Terminal({ onToggleVersion }: TerminalProps) {
         <div className="text-sm">
           <p className="text-[var(--terminal-cyan)]">.</p>
           <p>├── <span className="text-[var(--terminal-green)]">about.md</span></p>
+          <p>├── <span className="text-[var(--terminal-green)]">build-guide.md</span></p>
           <p>├── <span className="text-[var(--terminal-green)]">contact.md</span></p>
           <p>├── <span className="text-[var(--terminal-green)]">experience.json</span></p>
           <p>├── <span className="text-[var(--terminal-cyan)]">projects/</span></p>
