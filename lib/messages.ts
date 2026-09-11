@@ -37,8 +37,11 @@ export async function storeMessage(input: IncomingMessage): Promise<StoredMessag
   if (process.env.BLOB_READ_WRITE_TOKEN) {
     // Date-prefixed so the blob listing sorts chronologically.
     const key = `messages/${stored.createdAt.slice(0, 10)}/${stored.id}.json`;
+    // Private: these are messages strangers send in confidence. A public blob
+    // URL is unguessable but still readable by anyone who obtains it, which is
+    // the wrong default for someone's name, email and pitch.
     await put(key, JSON.stringify(stored, null, 2), {
-      access: 'public',
+      access: 'private',
       contentType: 'application/json',
       addRandomSuffix: false,
     });
